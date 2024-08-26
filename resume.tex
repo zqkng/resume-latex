@@ -45,7 +45,7 @@
 % }}}
 
 % -----------------------------------------------------------------------------
-% FORMATTING MACRO {{{
+% FORMATTING {{{
 % -----------------------------------------------------------------------------
 % Format section headings
 \titleformat{\section}{\bfseries\Large}{}{0pt}{}[\vspace{1pt}\titlerule\vspace{-6.5pt}]
@@ -57,7 +57,7 @@
 % Format Education entry: Degree
 % Usage: \Degree{<1-date>}{<2-school>}{<3-major>}{<4-location>}{<5-url>}{<6-info}
 \newcommand*{\Degree}[6]{
-  \textbf{\href{#5}{#2}} \hfill {\footnotesize #4} \\
+  \textbf{\href{#5}{#2}} \hfill {\small #4} \\
   {#3} \hfill {\small #1} \\
   {\footnotesize #6}
 }
@@ -75,7 +75,7 @@
 % Format Projects entry: Project
 % Usage: \Project{<1-title>}{2-url-name}{<3-url-link>}{<4-description>}
 \newcommand*{\Project}[4]{
-  \textbf{#1} \hfill \href{#3}{#2} \\
+  \textbf{#1} \hfill \href{#3}{\small #2} \\
   \vspace{-9pt}
   \begin{itemize}
     {#4}
@@ -92,4 +92,150 @@
 
 % }}}
 
+
+% ============================================================================= 
+% MAIN DOCUMENT
+% ============================================================================= 
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% HEADER {{{
+% -----------------------------------------------------------------------------
+
+% Name
+\centerline{\Huge Firstname Lastname}
+
+\vspace{5pt}
+
+% Contact information
+\centerline{\href{mailto:name@gmail.com}{name@gmail.com} | \href{https://www.portfolio.com}{portfolio.com} | \href{https://github.com}{github.com/name}}
+
+\vspace{-10pt}
+
+% }}}
+
+% -----------------------------------------------------------------------------
+% SECTION: Education {{{
+% -----------------------------------------------------------------------------
+\section*{Education}
+
+\Degree
+  {Month YEAR}                      % Graduation Date
+  {College Institution}             % Institution Name
+  {Bachelor of Science in Major}    % Degree
+  {City, STATE}                     % Location (if not explicit in name)
+  {https://college-website.edu}     % URL
+  {Extra information here}          % Extra Information (optional)
+
+\vspace{-6.5pt}
+
+% }}}
+
+% -----------------------------------------------------------------------------
+% SECTION: Experience {{{
+% -----------------------------------------------------------------------------
+\section*{Experience}
+
+\Job
+  {Month YEAR -- Present}         % Dates
+  {Job Title}                     % Job Title
+  {Company Name}                  % Company Name
+  {City, STATE}                   % Location
+  {https://company-website.com}   % URL
+  {
+    \item \textbf{STAR:} \textbf{S}ituation \textbf{T}ask \textbf{A}ction \textbf{R}esult
+    \item \textbf{XYZ:} Accomplished \textbf{X} as measured by \textbf{Y} by doing \textbf{Z}
+    \item \textbf{CAR:} \textbf{C}hallenge \textbf{A}ction \textbf{R}esult
+  } % Description (bullet points)
+
+\Job
+  {Month YEAR -- Month YEAR}
+  {Job Title}
+  {Company Name}
+  {City, STATE}
+  {https://company-website.com}
+  {
+    \item \textbf{STAR:} \textbf{S}ituation \textbf{T}ask \textbf{A}ction \textbf{R}esult
+    \item \textbf{XYZ:} Accomplished \textbf{X} as measured by \textbf{Y} by doing \textbf{Z}
+    \item \textbf{CAR:} \textbf{C}hallenge \textbf{A}ction \textbf{R}esult
+  }
+
+\vspace{-18.5pt}
+
+% }}}
+
+% -----------------------------------------------------------------------------
+% SECTION: Projects {{{
+% -----------------------------------------------------------------------------
+\section*{Projects}
+ 
+\Project 
+  {Project Title}                   % Project Title
+  {portfolio.com/projectname}       % URL Name
+  {https://kennyzqng.com}           % URL Link
+  {                                 % Description (bullet points)
+    \item Write a short project description here
+    \item List relevant technologies used and takeaways 
+      (skills learned or insights discovered)
+  } 
+
+\Project 
+  {Project Title}
+  {projectname.com}
+  {https://mitcommlab.mit.edu/meche/commkit/portfolio/}
+  {
+    \item List real and relevant projects that standout
+      (not mandatory school projects or trivial tutorial projects)
+    \item Includes: something that solves a problem, something with users,
+      or something that is actively maintained
+    \item \url{https://mitcommlab.mit.edu/meche/commkit/portfolio/}
+  }
+
+\Project 
+  {Project Title}
+  {github.com/name/project}
+  {https://github.com/matiassingers/awesome-readme}
+  {
+    \item Make sure projects have good documentation or README
+    \item \url{https://github.com/matiassingers/awesome-readme}
+  }
+
+% ALTERNATE FORMATTING
+\section*{Projects}
+
+\begin{itemize}
+  \ProjectItem
+    {Project Title}                             % Project Title
+    {https://kennyzqng.com}                     % URL
+    {Write a short project description here}    % Description
+
+  \ProjectItem
+    {Project Title}
+    {https://mitcommlab.mit.edu/meche/commkit/portfolio/}
+    {Write a short project description here}
+
+  \ProjectItem
+    {Project Title}
+    {https://github.com/matiassingers/awesome-readme}
+    {Write a short project description here}
+\end{itemize}
+
+\vspace{-18.5pt}
+
+% }}}
+
+% -----------------------------------------------------------------------------
+% SECTION: Skills {{{
+% -----------------------------------------------------------------------------
+\section*{Skills}
+
+\textbf{Languages:} Python, TypeScript, JavaScript, C, Rust, SQL, HTML, CSS \\
+\textbf{Frameworks \& Libraries:} Django, Flask, ExpressJS, React, Redux, Tailwind CSS \\
+\textbf{Cloud Infrastructure:} PostgreSQL, Redis, RabbitMQ, Kafka,
+  Docker, Terraform, Amazon Web Services (AWS) 
+
+% }}}
+
+\end{document}
 
