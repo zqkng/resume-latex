@@ -2,6 +2,7 @@
 % !TEX encoding = UTF-8 Unicode
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
+% vim: set foldmethod=marker foldlevel=0:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % resume.tex
@@ -12,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ============================================================================= 
-% PREAMBLE
+% PREAMBLE {{{
 % ============================================================================= 
 % Set paper size and font size
 % USA/Canada: `letterpaper`; otherwise: `a4paper`
@@ -26,7 +27,7 @@
 \raggedright
 
 % -----------------------------------------------------------------------------
-% PACKAGES
+% PACKAGES {{{
 % ----------------------------------------------------------------------------- 
 \usepackage[
   top=0.4in,
@@ -39,6 +40,56 @@
 \usepackage{titlesec}                 % Enable section title customization
 \usepackage{enumitem}                 % Enable lists for bullet points
 \usepackage[hidelinks]{hyperref}      % Format hyperlinks
-\hypersetup{pdftitle={Firstname LastName - Résumé}, pdfauthor={Firstname Lastname}}
+\hypersetup{pdftitle={Kenny Ng - Résumé}, pdfauthor={Kenny Ng}}
+
+% }}}
+
+% -----------------------------------------------------------------------------
+% FORMATTING MACRO {{{
+% -----------------------------------------------------------------------------
+% Format section headings
+\titleformat{\section}{\bfseries\Large}{}{0pt}{}[\vspace{1pt}\titlerule\vspace{-6.5pt}]
+
+% Format bullet points
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\setlist[itemize]{itemsep=-2pt, leftmargin=12pt}
+
+% Format Education entry: Degree
+% Usage: \Degree{<1-date>}{<2-school>}{<3-major>}{<4-location>}{<5-url>}{<6-info}
+\newcommand*{\Degree}[6]{
+  \textbf{\href{#5}{#2}} \hfill {\footnotesize #4} \\
+  {#3} \hfill {\small #1} \\
+  {\footnotesize #6}
+}
+
+% Format Experience entry: Job 
+% Usage: \Job{<1-date>}{<2-title>}{<3-company>}{<4-location>}{<5-url}{<6-description}
+\newcommand*{\Job}[6]{
+  \textbf{#2} | \href{#5}{#3} --- {\small #4} \hfill {\small #1} \\
+  \vspace{-9pt}
+  \begin{itemize}
+    {#6}
+  \end{itemize}
+}
+
+% Format Projects entry: Project
+% Usage: \Project{<1-title>}{2-url-name}{<3-url-link>}{<4-description>}
+\newcommand*{\Project}[4]{
+  \textbf{#1} \hfill \href{#3}{#2} \\
+  \vspace{-9pt}
+  \begin{itemize}
+    {#4}
+  \end{itemize}
+}
+
+% Format Projects entry: ProjectItem
+% Usage: \ProjectItem{<1-title>}{2-url}{<3-description}
+\newcommand*{\ProjectItem}[3]{
+  \item \textbf{\href{#2}{#1}:} {#3}
+}
+
+% }}}
+
+% }}}
 
 
