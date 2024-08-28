@@ -39,8 +39,9 @@
 \usepackage[utf8]{inputenc}           % Input encoding
 \usepackage{titlesec}                 % Enable section title customization
 \usepackage{enumitem}                 % Enable lists for bullet points
+\usepackage{xifthen}                  % Enable conditional statements
 \usepackage[hidelinks]{hyperref}      % Format hyperlinks
-\hypersetup{pdftitle={Kenny Ng - Résumé}, pdfauthor={Kenny Ng}}
+\hypersetup{pdftitle={Firstname Lastname - Résumé}, pdfauthor={Firstname Lastname}}
 
 % }}}
 
@@ -51,21 +52,26 @@
 \titleformat{\section}{\bfseries\Large}{}{0pt}{}[\vspace{1pt}\titlerule\vspace{-6.5pt}]
 
 % Format bullet points
-\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 \setlist[itemize]{itemsep=-2pt, leftmargin=12pt}
+
+% Format textbar
+\newcommand{\entextbar}{\enspace\textbar\enspace}
 
 % Format Education entry: Degree
 % Usage: \Degree{<1-date>}{<2-school>}{<3-major>}{<4-location>}{<5-url>}{<6-info}
 \newcommand*{\Degree}[6]{
   \textbf{\href{#5}{#2}} \hfill {\small #4} \\
   {#3} \hfill {\small #1} \\
-  {\footnotesize #6}
+  {\small #6}
 }
 
 % Format Experience entry: Job 
 % Usage: \Job{<1-date>}{<2-title>}{<3-company>}{<4-location>}{<5-url}{<6-description}
 \newcommand*{\Job}[6]{
-  \textbf{#2} | \href{#5}{#3} --- {\small #4} \hfill {\small #1} \\
+  \ifthenelse{\isempty{#3}} 
+  {\textbf{#2} \hfill {\small #1} \\}
+  {\textbf{#2} | \href{#5}{#3} --- {\small #4} \hfill {\small #1} \\}
   \vspace{-9pt}
   \begin{itemize}
     {#6}
@@ -92,7 +98,6 @@
 
 % }}}
 
-
 % ============================================================================= 
 % MAIN DOCUMENT
 % ============================================================================= 
@@ -109,7 +114,12 @@
 \vspace{5pt}
 
 % Contact information
-\centerline{\href{mailto:name@gmail.com}{name@gmail.com} | \href{https://www.portfolio.com}{portfolio.com} | \href{https://github.com}{github.com/name}}
+\centerline{
+  (123) 456--7890 \entextbar
+  \href{mailto:name@email.com}{name@email.com} \entextbar
+  \href{https://www.portfolio.com}{portfolio.com} \entextbar
+  \href{https://github.com/name}{github.com/name}
+}
 
 \vspace{-10pt}
 
