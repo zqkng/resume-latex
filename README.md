@@ -1,6 +1,6 @@
 ## resume-latex
 
-Resume template, written in LaTeX.
+Resume template, created in LaTeX.
 
 To compile: `pdflatex resume.tex`
 
